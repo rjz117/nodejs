@@ -1,0 +1,289 @@
+- Define an arrow function divideByTwo which accepts a number and returns that number divided by 2.
+- Convert following function into arrow function 
+1)
+function sum(num1, num2){
+    return num1 + num2
+}
+
+sum(41,2)
+sum(43,0)
+console.log("the answer to everything is", sum(43,0))
+Ans:
+const divisionByTwo:(num:number) => number = (num) => {
+	return num/2;
+}
+const sum:(num1:number, num2:number) => number = (num1, num2) => {
+    return num1 + num2;
+}
+
+
+2)  Transform this function that tells you how long a string is:
+function stringLength(str){
+    console.log(`the length of "${str}" is:`, str.length)
+}
+
+let longestCityNameInTheWorld = "Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu"
+
+stringLength(longestCityNameInTheWorld)
+Ans:
+const stringLength:(str:string) => void = (str) => {
+    console.log(`the length of "${str}" is:`, str.length)
+}
+
+3) Let's change the previous function a bit to include a variable and a return statement:
+function stringLength(str){
+    let length = str.length
+    console.log(`the length of "${str}" is:`, length)
+    return str.length
+}
+
+stringLength("willynilly")
+Ans:
+const stringLength:(str:string) => number = (str) => {
+    let length = str.length
+    console.log(`the length of "${str}" is:`, length)
+    return str.length
+}
+
+
+4) Transform this function that selects a random element from the array and concatenates it to your name:
+
+
+let alerts = ["Hey, you are awesome", "You are so wonderful", "What a marvel you are", "You're so lovely", "You're so sweet that I'd think you're a sweet potato -- and I LOOOOVE POTATOES"]
+
+function showAlert(name){    
+    alert(alerts[(Math.floor(Math.random()*alerts.length))] + `, ${name}!`)
+}
+
+showAlert("you ball of fluff")
+Ans:
+const showAlert = (name:string) => {    
+    console.log(alerts[(Math.floor(Math.random()*alerts.length))] + `, ${name}!`);
+}
+
+showAlert("Ravirajsinh")
+
+- Write a JavaScript program which prints the elements of the following array.
+Note : Use nested foreach loops.
+Sample array : var a = [[1, 2, 1, 24], [8, 11, 9, 4], [7, 0, 7, 27], [7, 4, 28, 14], [3, 10, 26, 7]];
+Sample Output :
+"row 0"
+" 1"
+" 2"
+" 1"
+" 24"
+"row 1”
+Ans:
+const removeDuplicates: (array: number[][]) => void = (array) => {
+  const newArray: typeof array = [];
+  for (let i = 0; i < array.length; i++) {
+    console.log(`Row-${i}`);    
+    for (let j = 0; j < array[i].length; j++) {
+        console.log(array[i][j]);        
+    }
+  }
+};
+
+
+
+- Write a JavaScript program to remove duplicate items from an array (ignore case sensitivity)
+Ans:
+const removeDuplicates: <T>(array: T[])=> T[] = (array) => {
+    const newArray: typeof array = [];
+    array.forEach((item) => {
+        if(newArray.includes(item)) {
+            return;
+        }
+        else {
+            return newArray.push(item)
+        }
+    })
+    return newArray;
+};
+
+- Write a JavaScript program to compute the union of two arrays. 
+Sample Data :
+console.log(union([1, 2, 3], [100, 2, 1, 10]));
+Output: [1, 2, 3, 10, 100]
+Ans:
+const unionOfArray: (arr1: number[], arr2: number[]) => number[] = (arr1, arr2) => {
+  const unionArray = [...arr1];
+  arr2.forEach((element) => {
+    if (!unionArray.includes(element)) {
+      unionArray.push(element);
+    }
+  });
+  return unionArray.sort((a,b) => a-b)
+};
+
+
+- Write a JavaScript function to sort the following array of objects by title value. 
+Sample object :
+var library = [ 
+   { author: 'Bill Gates', title: 'The Road Ahead', libraryID: 1254},
+   { author: 'Steve Jobs', title: 'Walter Isaacson', libraryID: 4264},
+   { author: 'Suzanne Collins', title: 'Mockingjay: The Final Book of The Hunger Games', libraryID: 3245}
+   ];
+
+Expected result :
+{
+  author: "Suzanne Collins",
+  libraryID: 3245,
+  title:"Mockingjay:The Final Book of The Hunger Games"
+}, {
+  author: "Bill Gates",
+  libraryID: 1254,
+  title: "The Road Ahead"
+}, {
+  author: "Steve Jobs",
+  libraryID: 4264,
+  title: "Walter Isaacson"
+}]
+Ans:
+type Data = { author: string; title: string; libraryID: number };
+
+const sortingWithTitle: (arrayObj: Data[]) => void = (arrayObj) => {
+  return arrayObj.sort((a, b) => {
+    return a.title.localeCompare(b.title);
+  });
+};
+
+- Write a JavaScript function to fill an array with values (numeric, string with one character) on supplied bounds
+Test Data :
+console.log(num_string_range('a', "z", 2));
+["a", "c", "e", "g", "i", "k", "m", "o", "q", "s", "u", "w", "y"]
+Ans:
+const num_string_range: (start:string, end:string, offSet:number) => Array<string> = (start,end,offSet) => {
+    const aToZ = "abcdefghijklmnopqrstuvwxyz";
+    const aToZArray = aToZ.split('');
+    const startOfArray = aToZArray.indexOf(start);
+    const endOfArray = aToZArray.indexOf(end);
+    const sortArray = aToZArray.splice(startOfArray,endOfArray-startOfArray+1);
+    return sortArray.filter((item) => sortArray.indexOf(item)%offSet===0)
+};
+
+
+- Write a JavaScript function to create an object from an array, using the specified key and excluding it from each value
+        Test Data :
+indexOn([ { id: 10, name: 'apple' }, { id: 20, name: 'orange' } ], x => x.id)
+Expected Output:
+{"undefined":{"id":20,"name":"orange"}}
+
+- Write a function that creates a new array with given values
+Ans:
+const compareArray: <T>(...args:T[]) => T[] = (...args) => {
+    return args;
+};	
+
+- Write a function that reverts the input array. Please, do not use array.reverse(); to make this task more enjoyable
+Ans:
+const compareArray: <T>(arr:T[]) => void = (arr) => {
+    const newArray:typeof arr= [];
+    arr.forEach(element => {
+        newArray.unshift(element); 
+    });
+    return newArray;
+};
+
+- Write a method that returns an object composed of key-value pairs.
+Expected Result: [['a', 1], ['b', 2]] => { a: 1, b: 2 } 
+Ans:
+type customArray = [string, number];
+
+const compareArray: (array: customArray[]) => Object = (arr) => {
+  let obj: Object = {};
+    arr.forEach(element => {
+        obj = {...obj, [element[0]]:element[1] }
+    });
+    return obj;
+};
+
+- Write a method that makes a shallow compare of two arrays and returns true if they are identical.
+Expected Result: ([1, 2, 3], [1, 2, 3]) => true 
+Ans:
+const compareArray: <T>(arr1:Array<T>, arr2:Array<T>) => boolean = (arr1, arr2) => {
+    let result:boolean = false;
+    if(arr1.length !== arr2.length) {
+        return result;
+    }
+    else {
+        for(const e of arr1) {            
+            if(!arr2.includes(e)){
+                result = false;
+            }
+            else result = true;
+        }
+        return result;
+    }
+};
+
+
+- Write a method that turns a deep array into a plain array
+Expected Result: [1, 2, [3, 4, [5]]] => [1, 2, 3, 4, 5]
+Find the sum of the array.
+Note: Don’t use any loop
+const numbers = [1, 2, 3, 4];
+Ans:
+const fun1 = <T>(array: T[]) => {
+  console.log(array.flat(3));
+};
+
+- Create a function that takes variable number of argument and print the sum of arguments
+Ans:
+const sumOfArgs: (...args:number[]) => number = (...args) => {
+    let sum = 0;
+    args.forEach(element => {
+        sum+=element;
+    })
+    return sum;
+};
+
+- Write a function which merge two objects
+mergeObjects({a:1, b:2}, {c:3, d:4}) 
+Output: {a:1, b:2, c:3, d:4}
+Ans:
+const mergeObjects: (
+  obj1: { a: number; b: number },
+  obj2: { c: number; d: number }
+) => {a:number, b:number, c:number, d:number} = (obj1, obj2) => {
+    return {...obj1, ...obj2}
+};
+
+- Create a function which remove a random element in the items array and return a new array without that item 
+Ans:
+const removeRandomElement:<T>(array: Array<T>) => Array<T> = (array) => {
+  const randomNumber = Math.floor(Math.random()*(array.length))
+  const newArray = array.filter((element) => {
+    return array.indexOf(element) !== randomNumber;
+  });
+  return newArray;
+};
+
+- Create a function which return a new object with all the keys and values from obj and a new key/value pair
+Ans:
+const newObject: (Obj: { name: string; surname: string }) => {
+  name: string;
+  surname: string;
+  mobile: number;
+} = (Obj) => {
+  return { ...Obj, mobile: 6354412800 };
+};
+
+- Create anonymous function and run it when javascript get executed.
+Ans:
+(() => {
+    console.log("annonymus function"); 
+})()
+
+-  Create a function call fullName which returns a function  called surName and both function has one argument
+ Output: Print fullname & Print the pointer to inner function.
+ Ans:
+ const fun1 = (name:string) => {    
+  const surname = 'Zala';
+  const lname = fun2(surname);
+  console.log(`Fullname is ${name} ${lname}`);
+  
+}
+const fun2 = (lname:string) => {
+  return lname;
+} 
