@@ -1,3 +1,4 @@
+<div class="backdrop"></div>
 <header class="main-header">
     <nav class="main-header__nav">
         <ul class="main-header__item-list">
@@ -9,6 +10,9 @@
             </li>
             <li class="main-header__item">
                 <a class="<%= path === '/cart' ? 'active' : '' %>" href="/cart">Cart</a>
+            </li>
+            <li class="main-header__item">
+                <a class="<%= path === '/orders' ? 'active' : '' %>" href="/orders">Orders</a>
             </li>
             <li class="main-header__item">
                 <a class="<%= path === '/admin/add-product' ? 'active' : '' %>" href="/admin/add-product">Add Product
